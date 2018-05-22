@@ -1,4 +1,6 @@
-const path = require('path');
+var path = require('path');
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -6,14 +8,14 @@ module.exports = {
         path.join(__dirname, 'src', 'index')
     ],
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'public'),
         filename: 'bundle.js',
         publicPath: '/static/js'
     },
     plugins: [
         new ExtractTextPlugin('bundle.css', {allChunks: true}),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
+       new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development')
         })
     ],
