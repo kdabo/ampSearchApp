@@ -17,8 +17,8 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/ypSearchResult', function (req, res) {
-    var whatTerm = req.query.what;
+app.get('/ypSearchResult/:what', function (req, res) {
+    var whatTerm = req.params.what;
     request
         .post('https://www.detelefoongids.nl/v1/rest/api/ypSearchResult')
         .send({
