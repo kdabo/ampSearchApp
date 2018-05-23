@@ -14,10 +14,30 @@ class Search extends Component {
                         <h2 className="">Find and call any business in Amsterdam.</h2>
                     </header>
                     <div className="">
-                        <label className="">
-                                <input name="search" type="text" placeholder="Search for business"/>
-                                <button on="tap:AMP.setState({})">Search</button>
-                        </label>
+                        <form method="post"
+                              action-xhr="/ypSearchResult"
+                              target="_top">
+                            <input type="text"
+                                   className=""
+                                   name="what"
+                                   placeholder="Search for business"
+                                   required/>
+                            <input type="submit"
+                                   value="Search" />
+                            <div submit-success>
+                                <template type="amp-mustache">
+                                    Success! Thanks {{what}} for trying the
+                                    <code>amp-form</code> demo! Try to insert the word "error" as a name input in the form to see how
+                                    <code>amp-form</code> handles errors.
+                                </template>
+                            </div>
+                            <div submit-error>
+                                <template type="amp-mustache">
+                                    Error! Thanks {{name}} for trying the
+                                    <code>amp-form</code> demo with an error response.
+                                </template>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
